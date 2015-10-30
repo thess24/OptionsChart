@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="utf-8">
+        <title>Options Chart</title>
+
+        <link rel="stylesheet" type="text/css" href="css/optionschart.css">
+    </head>
+
+    <body>
+
+        <svg id='options_chart'></svg>
+
+        <script type="text/javascript" src="js/d3.min.js"></script>
+        <script type="text/javascript" src="js/optionschart.js"></script>
+        <script type="text/javascript">
+
+        var twx = new OptionsChart.Product();
+        twx.createStock( {ticker:'TWX', purchase: 'buy', price: 72} );
+        twx.createOption( {ticker:'TWX', purchase: 'sell', price: 7, optiontype: 'call', strike: 74} );
+
+        var args = {    element:document.querySelector('#options_chart'), 
+                        titleText:'TWX Options Payoff vs Price',
+                        products:twx    };
+
+        var graph = new OptionsChart.Graph( args );
+        graph.render();
+                
+
+        </script>
+    </body>
+
+</html>
